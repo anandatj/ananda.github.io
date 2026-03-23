@@ -9,7 +9,7 @@
         :root {
             --bg-color: #f8fafc;
             --surface-color: #ffffff;
-            --primary-blue: #2563eb;
+            --primary-blue: #1e4baa;
             --secondary-blue: #3b82f6;
             --text-main: #0f172a;
             --text-muted: #475569;
@@ -234,8 +234,9 @@
     <section id="home">
         <p class="highlight">Hello, my name is</p>
         <h1>Ananda.</h1>
-        <h1>I engineer power systems.</h1>
-        <p>I hold a Master's degree in Electrical Engineering with a specialization in motor drives and power electronics. Based in Denpasar, Bali, I am passionate about researching and designing highly efficient hardware, from theoretical parameter estimation to practical PCB layouts.</p>
+        <h2>I am a Motor Drive Control - Power Electronics Engineer</h2>
+        <p>I hold a Master's degree in Electrical Engineering from Columbia University with a specialization in motor drives and power electronics. <br><br> Based in Denpasar, Bali, I am passionate about researching and designing highly efficient control system and hardware, from theoretical parameter estimation, control system design and simulation for a better greener power systems.</p>
+        <p>This website is still under progress :)</p>
         <div>
             <a href="#projects" class="btn">View My Work</a>
         </div>
@@ -243,7 +244,7 @@
 
     <section id="projects">
         <h2>Projects</h2>
-        <p>A showcase of my hardware design and motor control implementations.</p>
+        <p>A showcase of my hardware, control system designs, and power electronics implementations.</p>
         <div class="grid-layout" id="projects-container"></div>
     </section>
 
@@ -271,30 +272,36 @@
         // 1. Define Projects Data
         const projectsData = [
             {
-                title: "Half-Bridge PEBB Inverter",
-                description: "Designing a scalable and modular inverter utilizing the Half-Bridge Power Electronics Building Block (PEBB) concept. This project focuses on high-efficiency motor control applications.",
+                title: "Motor Drive Parameter Estimation",
+                description: "A summary and breakdown of my published paper on advanced techniques for accurately estimating lumped parameters of VSI connected synchronous machines, including experimental validation and practical implications for drive design.",
                 link: "#",
                 linkText: "View Project"
             },
             {
-                title: "Magtonics Research",
-                description: "Establishing an independent research and branding initiative focused on advanced power electronics and modular hardware design solutions.",
+                title: "Resonant Controller Design for WRSM drives",
+                description: "Development of advanced rotor current control system for wound-rotor synchronous motor drives in C2000.",
                 link: "#",
                 linkText: "View Details"
+            },
+            {
+                title: "High-Speed Speed Controller Design for 900 kW Synchronous Machine in M4-Cortex Microcontroller",
+                description: "Design and implementation of a high-speed high-torque speed controller for a 900 kW synchronous machine using a M4-Cortex microcontroller through CAN Bus communication protocol.",
+                link: "#",
+                linkText: "View Project"
+            },
+                        {
+                title: "Grid Connected Battery Energy Storage System (BESS) Design and Simulation",
+                description: "Design and simulation of a grid-connected battery energy storage system in MATLAB/Simulink, including control strategy development and performance analysis under various grid conditions such as peak-shaving and frequency regulation.",
+                link: "#",
+                linkText: "View Project"
             }
         ];
 
         // 2. Define  Blog Data
         const blogData = [
             {
-                title: "Motor Drive Parameter Estimation",
-                description: "A summary and breakdown of my published paper on advanced techniques for accurately estimating parameters in modern motor drive systems.",
-                link: "#",
-                linkText: "Read Paper"
-            },
-            {
-                title: "Altium Designer Workflows",
-                description: "A technical post detailing my experience transitioning to professional-standard PCB design and routing practices using Altium Designer.",
+                title: "Tbd",
+                description: "...",
                 link: "#",
                 linkText: "Read Article"
             }
