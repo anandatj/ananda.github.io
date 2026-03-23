@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananda | Portfolio</title>
+    <style>
+        /* CSS Variables for Modern Blue Theme */
+        :root {
+            --bg-color: #0f172a; /* Slate 900 - Deep dark blue/gray */
+            --surface-color: #1e293b; /* Slate 800 - Lighter surface */
+            --primary-blue: #3b82f6; /* Blue 500 - Vibrant accent */
+            --secondary-blue: #60a5fa; /* Blue 400 */
+            --text-main: #f8fafc; /* Slate 50 - Off-white */
+            --text-muted: #94a3b8; /* Slate 400 - Gray text */
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--surface-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Sections Layout */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--primary-blue);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Blog / Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background-color: var(--surface-color);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-blue);
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            nav { flex-direction: column; gap: 1rem; }
+            .nav-links { gap: 1rem; }
+            section { padding-top: 8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#home" class="logo">A.</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blog">Blog & Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <p class="highlight">Hello, my name is</p>
+        <h1>Ananda.</h1>
+        <h1>I engineer power systems.</h1>
+        <p>I hold a Master's degree in Electrical Engineering with a specialization in motor drives and power electronics. Based in Denpasar, Bali, I am passionate about researching and designing highly efficient hardware, from theoretical parameter estimation to practical PCB layouts.</p>
+        <div>
+            <a href="#blog" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <section id="blog">
+        <h2>Blog & Projects</h2>
+        <p>A collection of my academic research, technical writing, and hardware design projects.</p>
+        
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Half-Bridge PEBB Inverter</h3>
+                <p>Designing a scalable and modular inverter utilizing the Half-Bridge Power Electronics Building Block (PEBB) concept. This project focuses on high-efficiency motor control applications.</p>
+            </div>
+            
+            <div class="project-card">
+                <h3>Motor Drive Parameter Estimation</h3>
+                <p>A summary and breakdown of my published paper on advanced techniques for accurately estimating parameters in modern motor drive systems.</p>
+            </div>
+            
+            <div class="project-card">
+                <h3>Altium Designer Workflows</h3>
+                <p>A technical blog post detailing the transition to professional-standard PCB design and routing practices using Altium Designer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-box">
+            <p>I am currently exploring opportunities for a PhD program in Europe and am always open to discussing power electronics, motor control research, or new collaborations.</p>
+            <a href="mailto:your.email@example.com" class="btn">Say Hello</a>
+            
+            <div class="social-links">
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Google Scholar</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
