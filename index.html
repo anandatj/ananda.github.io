@@ -188,6 +188,23 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
 
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary-blue);
+            background-color: var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .social-links {
             margin-top: 2rem;
             display: flex;
@@ -254,16 +271,20 @@
         <div class="grid-layout" id="blog-container"></div>
     </section>
 
+  <!-- Contact Section -->
     <section id="contact">
         <h2>Get In Touch</h2>
         <div class="contact-box">
-            <p>I am currently exploring opportunities for a PhD program and am always open to discussing power electronics, motor control research, or new collaborations.</p>
-            <a href="mailto:your.email@example.com" class="btn">Say Hello</a>
+            <div class="profile-photo">
+                <!-- Replace the src link below with the path to your actual photo (e.g., "images/my-photo.jpg") -->
+                <img src="./src/WEB_IMG20230917173222~2.jpg" alt="Ananda">
+            </div>
+            <p>I am currently exploring opportunities for a PhD program and I am always open to discussing power electronics, motor drive control, renewable energy integration, smart grid, or new collaborations.</p>
+            <a href="mailto:anandatjakra.007@gmail.com" class="btn">Say Hello!</a>
             
             <div class="social-links">
-                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">Google Scholar</a>
+                <a href="https://github.com/anandatj" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/anandatjakra" target="_blank">LinkedIn</a>
             </div>
         </div>
     </section>
