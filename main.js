@@ -68,7 +68,7 @@
                 linkText: "Read Article (In Progress)"
             },
                        {
-                title: "Manual Purely Mechnical Pre-Quartz Soviet Watch Repair",
+                title: "Soviet Mechanical Watch Repiar",
                 description: "Repaired my father's Vostok Amphibia watch from the 80s that had a main spring problem.",
                 image: "./src/vostok.jpg",
                 link: "#",

@@ -51,9 +51,9 @@
             z-index: -2; /* Sits behind the circuit SVG, but above the solid background color */
             /* Using radial gradients mapped to the --scroll CSS variable */
             background: 
-                radial-gradient(circle at calc(20% + var(--scroll, 0) * 60%) calc(10% + var(--scroll, 0) * 80%), rgba(214, 217, 255, 0.24) 0%, transparent 30%),
-                radial-gradient(circle at calc(80% - var(--scroll, 0) * 40%) calc(80% - var(--scroll, 0) * 50%), rgba(192, 207, 255, 0.233) 0%, transparent 30%),
-                radial-gradient(circle at calc(50% + var(--scroll, 0) * 30%) calc(50% - var(--scroll, 0) * 30%), rgba(243, 202, 255, 0.205) 0%, transparent 30%);
+                radial-gradient(circle at calc(20% + var(--scroll, 0) * 60%) calc(10% + var(--scroll, 0) * 80%), rgb(250, 253, 255) 0%, transparent 30%),
+                radial-gradient(circle at calc(80% - var(--scroll, 0) * 40%) calc(80% - var(--scroll, 0) * 50%), rgb(249, 251, 255) 0%, transparent 30%),
+                radial-gradient(circle at calc(50% + var(--scroll, 0) * 30%) calc(50% - var(--scroll, 0) * 30%), rgb(246, 248, 255) 0%, transparent 30%);
             pointer-events: none;
             will-change: background;
         }
