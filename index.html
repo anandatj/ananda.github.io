@@ -169,7 +169,8 @@
         .card {
             background-color: var(--surface-color);
             border-radius: 12px;
-            border-top: 4px solid var(--primary-blue);
+            /* Changed to a semi-transparent blue */
+            border-top: 2px solid rgba(30, 75, 170, 0.9);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
             display: flex;
             flex-direction: column;
@@ -182,6 +183,19 @@
             height: 160px; /* Fixed height to keep cards uniform */
             object-fit: cover; /* Ensures images don't stretch */
             border-bottom: 1px solid var(--border-color);
+        }
+
+        .glass-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Glossy diagonal reflection */
+            background: linear-gradient(135deg, rgba(30, 75, 170, 0.2) 0%, rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0) 45%);
+            /* Inner light highlighting the glass edge */
+            box-shadow: inset 0 2px 4px rgba(30, 75, 170, 0.4);
+            pointer-events: none; /* Allows right-clicking or dragging the image beneath */
         }
 
         /* Card Content Styling */
@@ -364,7 +378,7 @@
             {
                 title: "Sensorless High-Speed Control of BLDC Motor for Stress Testing Rig",
                 description: "Design and implementation of a sensorless high-speed (up to 20,000 RPM bidirectional) control system for a 1.2 kW BLDC motor used in a proprietary stress testing rig that cycles between variation of speeds for weeks at a time, including control strategy development and hardware implementation.",
-                image: "https://via.placeholder.com/600x300/e2e8f0/475569?text=Sensorless+Control",
+                image: "./src/bldc.jpg",
                 link: "#",
                 linkText: "View Project"
             },
@@ -382,6 +396,13 @@
                 link: "#",
                 linkText: "View Project"
             },
+            {
+                title: "High Voltage Indicator Circuit Design for High Power Test Bench",
+                description: "Design and PCB build of a high voltage indicator circuit for a high power dyno test bench, ensuring safe operation and real-time monitoring of DC bus voltage level.",
+                image: "./src/light_pcb.jpg",
+                link: "#",
+                linkText: "View Project"
+            }, 
             {
                 title: "Object Detection Algorithm Comparison on Thermal Imaging Data",
                 description: "A comparative study of various object detection algorithms implemented on thermal imaging data, evaluating their performance in terms of accuracy, speed, and robustness under different environmental conditions. (Undergraduate Thesis)",
@@ -401,9 +422,9 @@
                 linkText: "Read Article"
             },
                        {
-                title: "Just Cleaned My Vostok Amphibia",
-                description: "",
-                image: "./src/svpwm.png",
+                title: "Manual Purely Mechnical Pre-Quartz Soviet Watch Repair",
+                description: "Repaired my father's Vostok Amphibia watch from the 80s that had a main spring problem.",
+                image: "./src/vostok.jpg",
                 link: "#",
                 linkText: "Read Article"
             }
@@ -416,7 +437,10 @@
             
             return `
                 <div class="card">
-                    <img src="${imageUrl}" alt="${item.title}" class="card-img">
+                    <div class="card-img-wrapper">
+                        <img src="${imageUrl}" alt="${item.title}" class="card-img">
+                        <div class="glass-overlay"></div>
+                    </div>
                     <div class="card-content">
                         <h3>${item.title}</h3>
                         <p>${item.description}</p>
