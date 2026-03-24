@@ -178,11 +178,19 @@
             overflow: hidden; /* Keeps the top image corners rounded with the card */
         }
 
+        /* Card Image & Glass Overlay Styling */
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px; /* Fixed height to keep cards uniform */
+            border-bottom: 1px solid var(--border-color);
+        }
+
         .card-img {
             width: 100%;
-            height: 160px; /* Fixed height to keep cards uniform */
+            height: 100%;
             object-fit: cover; /* Ensures images don't stretch */
-            border-bottom: 1px solid var(--border-color);
+            display: block;
         }
 
         .glass-overlay {
@@ -192,9 +200,9 @@
             width: 100%;
             height: 100%;
             /* Glossy diagonal reflection */
-            background: linear-gradient(135deg, rgba(30, 75, 170, 0.2) 0%, rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0) 45%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0) 45%);
             /* Inner light highlighting the glass edge */
-            box-shadow: inset 0 2px 4px rgba(30, 75, 170, 0.4);
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4);
             pointer-events: none; /* Allows right-clicking or dragging the image beneath */
         }
 
@@ -433,7 +441,7 @@
         // 3. Create a function to generate the HTML for a card
         function generateCardHTML(item) {
             // Check if there is an image, otherwise use a default placeholder
-            const imageUrl = item.image ? item.image : "https://via.placeholder.com/600x300/e2e8f0/475569?text=Project+Image";
+            const imageUrl = item.image ? item.image : "bldc.jpg";
             
             return `
                 <div class="card">
