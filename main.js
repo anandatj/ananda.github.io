@@ -12,42 +12,42 @@
                 description: "Development of advanced rotor current control system for wound-rotor synchronous motor drives in C2000 microcontroller, achieving minimal delay and lag between setpoint current and excitation current.",
                 image: "./src/propres.png",
                 link: "#",
-                linkText: "View Project"
+                linkText: ""
             },
             {
                 title: "High-Speed Speed Controller Design for Very High Power Synchronous Machine in M4-Cortex MCU",
                 description: "Design and implementation of a high-speed high-torque speed controller for a 900 kW synchronous machine using a M4-Cortex microcontroller through CAN Bus communication protocol.",
                 image: "./src/m4_cascadia.jpg",
                 link: "#",
-                linkText: "View Project"
+                linkText: ""
             },
             {
                 title: "Sensorless High-Speed Control of BLDC Motor for Stress Testing Rig",
                 description: "Design and implementation of a sensorless high-speed (up to 20,000 RPM bidirectional) control system for a 1.2 kW BLDC motor used in a proprietary stress testing rig that cycles between variation of speeds for weeks at a time, including control strategy development and hardware implementation.",
                 image: "./src/bldc.jpg",
                 link: "#",
-                linkText: "View Project"
+                linkText: ""
             },
             {
                 title: "Switching Dynamic Brake Circuit Design for High-Speed BLDC Motor",
                 description: "Design and simulation of a 2 kW dynamic brake circuit board for high-speed BLDC motors, focusing on fast response and efficient energy dissipation during rapid deceleration.",
                 image: "./src/board_power_electronics.jpg",
                 link: "#",
-                linkText: "View Project"
+                linkText: ""
             },
             {
                 title: "Grid Connected Battery Energy Storage System (BESS) Design and Simulation",
                 description: "Design and simulation of a grid-connected battery energy storage system in MATLAB/Simulink, including control strategy development and performance analysis under various grid conditions such as peak-shaving and frequency regulation.",
                 image: "./src/peakshave_plot.png",
                 link: "#",
-                linkText: "View Project"
+                linkText: ""
             },
             {
                 title: "High Voltage Indicator Circuit Design for High Power Test Bench",
                 description: "Design and PCB build of a high voltage indicator circuit for a high power dyno test bench, ensuring safe operation and real-time monitoring of DC bus voltage level.",
                 image: "./src/light_pcb.jpg",
                 link: "#",
-                linkText: "View Project"
+                linkText: ""
             }, 
             {
                 title: "Object Detection Algorithm Comparison on Thermal Imaging Data",
@@ -65,14 +65,14 @@
                 description: "An exploration of how and why Space Vector Pulse Width Modulation (SVPWM) is used in modern power electronics.",
                 image: "./src/svpwm.png",
                 link: "#",
-                linkText: "Read Article"
+                linkText: "Read Article (In Progress)"
             },
                        {
                 title: "Manual Purely Mechnical Pre-Quartz Soviet Watch Repair",
                 description: "Repaired my father's Vostok Amphibia watch from the 80s that had a main spring problem.",
                 image: "./src/vostok.jpg",
                 link: "#",
-                linkText: "Read Article"
+                linkText: "Read Article (In Progress)"
             }
         ];
 
@@ -90,7 +90,7 @@
                     <div class="card-content">
                         <h3>${item.title}</h3>
                         <p>${item.description}</p>
-                        <a href="${item.link}" class="card-link" target="_blank">${item.linkText} &rarr;</a>
+                        <a href="${item.link}" class="card-link" target="_blank">${item.linkText}</a>
                     </div>
                 </div>
             `;
@@ -99,3 +99,11 @@
         // 4. Inject the generated HTML into the specific containers
         document.getElementById('projects-container').innerHTML = projectsData.map(generateCardHTML).join('');
         document.getElementById('blog-container').innerHTML = blogData.map(generateCardHTML).join('');
+
+        // 5. Ambient Light Scroll Effect
+        window.addEventListener('scroll', () => {
+        // Calculate how far down the page we've scrolled as a decimal (0.0 to 1.0)
+        const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+        // Pass that value to our CSS variable
+        document.body.style.setProperty('--scroll', scrollPercent);
+        });

@@ -1,6 +1,6 @@
         /* CSS Variables for Modern Light Blue Theme */
         :root {
-            --bg-color: #f8fafc;
+            --bg-color: #fafafa;
             --surface-color: #ffffff;
             --primary-blue: #1f55c9;
             --secondary-blue: #3b82f6;
@@ -35,10 +35,27 @@
             /* Replace the URL below with the path to your actual SVG file */
             background-image: url('./src/circuit.svg'); 
             background-repeat: repeat;
-            background-size: 130rem; /* Adjust pattern size */
-            opacity: 0.03; /* Adjust faintness here (0.01 to 1.0) */
+            background-size: 160rem; /* Adjust pattern size */
+            opacity: 0.05; /* Adjust faintness here (0.01 to 1.0) */
+            filter: blur(4px) brightness(1); /* Adds a slight blur to the SVG pattern */
             z-index: -1; /* Keeps it behind all the text and cards */
             pointer-events: none; /* Ensures you can still click buttons over it */
+        }
+
+        .ambient-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2; /* Sits behind the circuit SVG, but above the solid background color */
+            /* Using radial gradients mapped to the --scroll CSS variable */
+            background: 
+                radial-gradient(circle at calc(20% + var(--scroll, 0) * 60%) calc(10% + var(--scroll, 0) * 80%), rgba(214, 217, 255, 0.24) 0%, transparent 30%),
+                radial-gradient(circle at calc(80% - var(--scroll, 0) * 40%) calc(80% - var(--scroll, 0) * 50%), rgba(192, 207, 255, 0.233) 0%, transparent 30%),
+                radial-gradient(circle at calc(50% + var(--scroll, 0) * 30%) calc(50% - var(--scroll, 0) * 30%), rgba(243, 202, 255, 0.205) 0%, transparent 30%);
+            pointer-events: none;
+            will-change: background;
         }
 
         /* Navigation - iOS Liquid Glass Pill */
@@ -95,7 +112,6 @@
             color: var(--primary-blue);
         }
 
-        /* Sections Layout */
         /* Sections Layout */
         section {
             min-height: 100vh;
