@@ -48,15 +48,24 @@
             pointer-events: none; /* Ensures you can still click buttons over it */
         }
 
-        /* Navigation */
+        /* Navigation - iOS Liquid Glass Pill */
         header {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(248, 250, 252, 0.9);
-            backdrop-filter: blur(10px);
+            top: 1.5rem; /* Floating away from the top edge */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+            -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+            backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.08), 
+                inset 0 2px 4px rgba(255, 255, 255, 0.8),
+                inset 0 -2px 4px rgba(255, 255, 255, 0.2);
             z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
         }
 
         nav {
@@ -65,7 +74,7 @@
             align-items: center;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 1rem 2.5rem;
         }
 
         .logo {
@@ -94,12 +103,13 @@
         }
 
         /* Sections Layout */
+        /* Sections Layout */
         section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 6rem 2rem 2rem;
+            padding: 8rem 2rem 2rem;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -158,13 +168,28 @@
 
         .card {
             background-color: var(--surface-color);
-            padding: 2rem;
             border-radius: 12px;
             border-top: 4px solid var(--primary-blue);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Keeps the top image corners rounded with the card */
+        }
+
+        .card-img {
+            width: 100%;
+            height: 160px; /* Fixed height to keep cards uniform */
+            object-fit: cover; /* Ensures images don't stretch */
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Card Content Styling */
+        .card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card:hover {
@@ -248,9 +273,10 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
-            nav { flex-direction: column; gap: 1rem; }
+            header { top: 0.5rem; width: 95%; border-radius: 1.5rem; }
+            nav { flex-direction: column; gap: 1rem; padding: 1rem 1.5rem; }
             .nav-links { gap: 1rem; }
-            section { padding-top: 8rem; }
+            section { padding-top: 10rem; }
         }
     </style>
 </head>
@@ -317,42 +343,49 @@
             {
                 title: "Motor Drive Parameter Estimation",
                 description: "A method for accurately estimating lumped parameters of VSI connected synchronous machines, including experimental validation and practical implications for drive design. <br>(Presented at IEEE APEC 2025 Conference in Atlanta, GA)",
+                image: "./src/vsi_parameter.png",
                 link: "https://ieeexplore.ieee.org/document/10977308",
                 linkText: "View Publication"
             },
             {
                 title: "Resonant Controller Design for WRSM drives",
                 description: "Development of advanced rotor current control system for wound-rotor synchronous motor drives in C2000 microcontroller, achieving minimal delay and lag between setpoint current and excitation current.",
+                image: "./src/propres.png",
                 link: "#",
                 linkText: "View Project"
             },
             {
                 title: "High-Speed Speed Controller Design for Very High Power Synchronous Machine in M4-Cortex MCU",
                 description: "Design and implementation of a high-speed high-torque speed controller for a 900 kW synchronous machine using a M4-Cortex microcontroller through CAN Bus communication protocol.",
+                image: "./src/m4_cascadia.jpg",
                 link: "#",
                 linkText: "View Project"
             },
             {
                 title: "Sensorless High-Speed Control of BLDC Motor for Stress Testing Rig",
                 description: "Design and implementation of a sensorless high-speed (up to 20,000 RPM bidirectional) control system for a 1.2 kW BLDC motor used in a proprietary stress testing rig that cycles between variation of speeds for weeks at a time, including control strategy development and hardware implementation.",
+                image: "https://via.placeholder.com/600x300/e2e8f0/475569?text=Sensorless+Control",
                 link: "#",
                 linkText: "View Project"
             },
             {
                 title: "Switching Dynamic Brake Circuit Design for High-Speed BLDC Motor",
                 description: "Design and simulation of a 2 kW dynamic brake circuit board for high-speed BLDC motors, focusing on fast response and efficient energy dissipation during rapid deceleration.",
+                image: "./src/board_power_electronics.jpg",
                 link: "#",
                 linkText: "View Project"
             },
             {
                 title: "Grid Connected Battery Energy Storage System (BESS) Design and Simulation",
                 description: "Design and simulation of a grid-connected battery energy storage system in MATLAB/Simulink, including control strategy development and performance analysis under various grid conditions such as peak-shaving and frequency regulation.",
+                image: "./src/peakshave_plot.png",
                 link: "#",
                 linkText: "View Project"
             },
             {
                 title: "Object Detection Algorithm Comparison on Thermal Imaging Data",
                 description: "A comparative study of various object detection algorithms implemented on thermal imaging data, evaluating their performance in terms of accuracy, speed, and robustness under different environmental conditions. (Undergraduate Thesis)",
+                image: "./src/MobileNetV2_web.png",
                 link: "https://lib.ui.ac.id/detail?id=20516386&lokasi=lokal",
                 linkText: "View Publication"
             }
@@ -363,6 +396,14 @@
             {
                 title: "Why SVPWM and How?",
                 description: "An exploration of how and why Space Vector Pulse Width Modulation (SVPWM) is used in modern power electronics.",
+                image: "./src/svpwm.png",
+                link: "#",
+                linkText: "Read Article"
+            },
+                       {
+                title: "Just Cleaned My Vostok Amphibia",
+                description: "",
+                image: "./src/svpwm.png",
                 link: "#",
                 linkText: "Read Article"
             }
@@ -370,11 +411,17 @@
 
         // 3. Create a function to generate the HTML for a card
         function generateCardHTML(item) {
+            // Check if there is an image, otherwise use a default placeholder
+            const imageUrl = item.image ? item.image : "https://via.placeholder.com/600x300/e2e8f0/475569?text=Project+Image";
+            
             return `
                 <div class="card">
-                    <h3>${item.title}</h3>
-                    <p>${item.description}</p>
-                    <a href="${item.link}" class="card-link" target="_blank">${item.linkText} &rarr;</a>
+                    <img src="${imageUrl}" alt="${item.title}" class="card-img">
+                    <div class="card-content">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                        <a href="${item.link}" class="card-link" target="_blank">${item.linkText} &rarr;</a>
+                    </div>
                 </div>
             `;
         }
