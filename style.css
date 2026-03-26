@@ -35,9 +35,9 @@
             /* Replace the URL below with the path to your actual SVG file */
             background-image: url('./src/circuit.svg'); 
             background-repeat: repeat;
-            background-size: 160rem; /* Adjust pattern size */
-            opacity: 0.05; /* Adjust faintness here (0.01 to 1.0) */
-            filter: blur(4px) brightness(1); /* Adds a slight blur to the SVG pattern */
+            background-size: 120rem; /* Adjust pattern size */
+            opacity: 0.06; /* Adjust faintness here (0.01 to 1.0) */
+            filter: blur(3px) brightness(1.4); /* Adds a slight blur to the SVG pattern */
             z-index: -1; /* Keeps it behind all the text and cards */
             pointer-events: none; /* Ensures you can still click buttons over it */
         }
@@ -51,9 +51,9 @@
             z-index: -2; /* Sits behind the circuit SVG, but above the solid background color */
             /* Using radial gradients mapped to the --scroll CSS variable */
             background: 
-                radial-gradient(circle at calc(20% + var(--scroll, 0) * 60%) calc(10% + var(--scroll, 0) * 80%), rgb(250, 253, 255) 0%, transparent 30%),
-                radial-gradient(circle at calc(80% - var(--scroll, 0) * 40%) calc(80% - var(--scroll, 0) * 50%), rgb(249, 251, 255) 0%, transparent 30%),
-                radial-gradient(circle at calc(50% + var(--scroll, 0) * 30%) calc(50% - var(--scroll, 0) * 30%), rgb(246, 248, 255) 0%, transparent 30%);
+                radial-gradient(circle at calc(20% + var(--scroll, 0) * 60%) calc(10% + var(--scroll, 0) * 80%), rgb(224, 229, 255) 0%, transparent 30%),
+                radial-gradient(circle at calc(80% - var(--scroll, 0) * 40%) calc(80% - var(--scroll, 0) * 50%), rgb(255, 254, 225) 0%, transparent 30%),
+                radial-gradient(circle at calc(50% + var(--scroll, 0) * 30%) calc(50% - var(--scroll, 0) * 30%), rgb(242, 225, 255) 0%, transparent 30%);
             pointer-events: none;
             will-change: background;
         }
@@ -65,12 +65,12 @@
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
-            max-width: 1100px;
+            max-width: 1200px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
             -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(110%);
-            backdrop-filter: blur(25px) saturate(200%) brightness(110%);
+            backdrop-filter: blur(16px) saturate(200%) brightness(110%);
             border-radius: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             box-shadow: 
                 0 10px 40px rgba(0, 0, 0, 0.08), 
                 inset 0 2px 4px rgba(255, 255, 255, 0.8),
