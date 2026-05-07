@@ -308,6 +308,19 @@ p { font-size: 1.125rem; color: var(--text-muted); max-width: 800px; margin-bott
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+
+/* Image Captions */
+.article-content figure { margin: 2rem 0; text-align: center; }
+.article-content figure img { margin: 0 auto 0.75rem auto; }
+/* Added margin-bottom to create space after the caption */
+.article-content figcaption { font-size: 0.95rem; color: var(--text-muted); font-style: italic; margin-bottom: 2rem; display: block; }
+
+/* References Section */
+.article-content .references { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
+.article-content .references h4 { font-size: 1.25rem; color: var(--text-main); margin-bottom: 1rem; }
+.article-content .references ol, .article-content .references ul { padding-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem; }
+.article-content .references li { margin-bottom: 0.75rem; }
+        
 .article-content .math-container { overflow-x: auto; padding: 1.5rem 0; margin: 1.5rem 0; background: var(--bg-color); border-radius: 8px; text-align: center;}
 
 @media (max-width: 768px) {
