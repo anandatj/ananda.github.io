@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
-   sodipodi:docname="SVPWM.svg"
+   sodipodi:docname="SVPWM-BASIC.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,15 +24,15 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="205.41452"
-     inkscape:cy="205.06097"
+     inkscape:zoom="11.313708"
+     inkscape:cx="192.46563"
+     inkscape:cy="215.66757"
      inkscape:window-width="3072"
      inkscape:window-height="1796"
      inkscape:window-x="3348"
      inkscape:window-y="889"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer5">
+     inkscape:current-layer="svg1">
     <inkscape:page
        x="0"
        y="0"
@@ -44,6 +44,23 @@
   </sodipodi:namedview>
   <defs
      id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,9.9999994,0,1 @ F,0,0,1,0,9.9999994,0,1 @ F,0,0,1,0,9.9999994,0,1 @ F,0,0,1,0,9.9999994,0,1"
+       radius="10"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
     <marker
        style="overflow:visible"
        id="marker16"
@@ -167,7 +184,7 @@
         </g>
       </g>
     </g>
-    <rect
+    <path
        style="fill:none;fill-opacity:0.886986;stroke:#c2c2c2;stroke-width:0.377953;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.316781"
        id="rect20"
        width="417.2261"
@@ -176,7 +193,10 @@
        y="0.18897639"
        inkscape:export-filename="rect20.svg"
        inkscape:export-xdpi="100"
-       inkscape:export-ydpi="100" />
+       inkscape:export-ydpi="100"
+       inkscape:path-effect="#path-effect1"
+       sodipodi:type="rect"
+       d="m 10.188976,0.18897639 397.226104,0 a 9.9999994,9.9999994 45 0 1 10,9.99999961 V 407.41508 a 9.9999994,9.9999994 135 0 1 -10,10 H 10.188976 a 9.9999994,9.9999994 45 0 1 -9.99999961,-10 l 0,-397.226104 A 9.9999994,9.9999994 135 0 1 10.188976,0.18897639 Z" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -1374,4 +1394,15 @@
       </g>
     </g>
   </g>
+  <text
+     xml:space="preserve"
+     style="font-size:16px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';writing-mode:lr-tb;direction:ltr;fill:none;fill-opacity:0.886986;stroke:#c2c2c2;stroke-width:0.377953;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;stroke-opacity:0.316781"
+     x="134.45827"
+     y="212.81766"
+     id="text2"><tspan
+       sodipodi:role="line"
+       id="tspan2"
+       x="134.45827"
+       y="212.81766"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Calibri;-inkscape-font-specification:Calibri;fill:#333333;fill-opacity:0.2;stroke:none">Ananda Tjakra Adisurja</tspan></text>
 </svg>
