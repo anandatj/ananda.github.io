@@ -63,17 +63,17 @@ const blogData = [
     {
         title: "Why SVPWM and How?",
         description: "An exploration of how and why Space Vector Pulse Width Modulation (SVPWM) is used in modern power electronics.",
-        image: "./src/svpwm.png",
+        image: "./articles/src/SVPWM-BASIC.svg",
         link: "#",
         linkText: "Read Article",
         articleFile: "./articles/svpwm_article.html" 
     },
     {
         title: "Soviet Mechanical Watch Repair",
-        description: "Repaired my father's Vostok Amphibia watch from the 80s that had a main spring problem.",
+        description: "Repaired my father's Vostok Amphibia watch from the 80s that had a main spring problem (in progress).",
         image: "./src/vostok.jpg",
-        link: "#",
-        linkText: "Read Article (In Progress)"
+        //link: "#",
+        //linkText: "Read Article (In Progress)"
     }
 ];
 
