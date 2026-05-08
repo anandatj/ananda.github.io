@@ -4,7 +4,10 @@
 
 <p> 
     Space Vector Pulse Width Modulation (SVPWM) is an advanced technique for generating sinusoidal voltage ouptut through a digital PWM carrier wave. 
-    It provides higher DC bus voltage utilization and less harmonic distortion compared to traditional Sinusoidal PWM (SPWM) generation method.
+    It provides higher DC bus voltage utilization and less harmonic distortion compared to traditional Sinusoidal PWM (SPWM) generation method. SPWM is the most 
+    commonly used method for generating sinusoidal voltage as it is simple and quick by comparing a sinusoidal reference voltage to a carrier wave, but it limits
+    the peak output voltage of \(V_{peak} = \frac{V_{DC}}{2}\). SVPWM, on the other hand allows a higher output voltage of \(V_{peak} = \frac{V_{DC}}{\sqrt{3}}\) 
+    which is around \(15.47 \% \) more than half of the DC bus voltage without overmodulating the output voltage.
 </p>
 
 
@@ -16,15 +19,19 @@
 </figure>
 
         
-<h3>The Concept</h3>
+<h3>The Basic Concept</h3>
 
 <p>
     The fundamental principle involves representing the 3-phase voltages as a single rotating space vector 
     in the \(\alpha\) and \(\beta\) reference frame. The reference voltage vector 
     \( \vec{V}_{ref} \) is synthesized using the two adjacent active vectors and the zero vectors within 
-    a specific sector of the hexagon. 
+    a specific sector of the hexagon as shown in Fig 1. 
 </p>
-        
+
+<p>
+    Explain hexagon timing
+</p>
+
 <div class="math-container">
     $$ \vec{V}_{ref} \cdot T_s = \vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2 + \vec{V}_0 \cdot T_0 $$
 </div>
