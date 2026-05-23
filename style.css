@@ -324,7 +324,7 @@ p { font-size: 1.125rem; color: var(--text-muted); max-width: 800px; margin-bott
         /* Updated Math Container to disable scrolling entirely */
 .article-content .math-container { 
     padding: 1.5rem 1rem; 
-    margin: 1.5rem 0; 
+    margin: 1.5rem 1rem; 
     background: var(--bg-color); 
     border-radius: 8px; 
     text-align: center;
