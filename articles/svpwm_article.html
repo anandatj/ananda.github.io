@@ -37,12 +37,17 @@
 <div class="math-container">
     \begin{equation} 
         \vec{V}_{ref} \cdot T_s = \vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2 + \vec{V}_0 \cdot T_0
-        \label{eq:dwelltime}
+        \label{eq:1}
     \end{equation}
 </div>
         
 <p>
-    Where \( T_s \) is the switching period, and \( T_1, T_2, T_0 \) are the respective dwell times for each vector state. 
+    Where \( T_s \) is the switching period, and \( T_1, T_2, T_0 \) are the respective dwell times for each vector state.  
+</p>
+
+<p>
+    These dwell times then can be used to calculate the duty cycle of each output phase. An animated visualization of
+    how the duty cycle changes with the reference voltage angle is shown in Fig 2.
 </p>
 
 <figure>
@@ -53,15 +58,22 @@
 <!---Add -->
 
 <p> 
-    The advantage of SVPWM is that it can be used to generate sinusoidal voltages with a higher DC bus voltage utilization 
-    and less harmonic distortion compared to traditional Sinusoidal PWM (SPWM) generation method. 
-    This is achieved by using a single rotating space vector in the \(\alpha\) and \(\beta\) reference frame, 
-    which results in a higher maximum achievable output voltage compared to traditional SPWM.
+Add the math to get phase output duty cycle
 </p>
 
-<h3>The Algorithm</h3>
+<h3>Analyzing A Sector (Example)</h3>
 <p> 
-    
+    Show example of 1 sector
+</p>
+
+<h3>General Algorithm</h3>
+<p> 
+    Show example of 1 sector
+</p>
+
+<h3>More Efficient Algorithm</h3>
+<p> 
+    Show example of 1 sector
 </p>
 
 <div class="references">
