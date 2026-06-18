@@ -4,7 +4,7 @@
 
 <p> 
     Welcome to my first article on SVPWM, this article will cover the basics and (slightly) mathematical approach on SVPWM.
-    I am writing this article because it took me a while to understand the basic concept of SVPWM, so I wrap this article up
+    I am writing this article because it took me a while to understand the basic concept of SVPWM. I tried to wrap this article up
     in a way that made it easy for me to understand the concept and implement it in my project. I hope you enjoy reading this article!
 </p>
 
@@ -64,7 +64,7 @@
 </figure>
 
 <!---Add -->
-<h3>Calculating The Duty Cycle</h3>
+<h3>Synthesizing The Duty Cycle</h3>
 <p> 
     How can we get the dwell time of each vector state? We already know from Equation (1) that the total dwell time of each vector state \(\vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2 + \vec{V}_0 \cdot T_0\)
     is equal to the reference voltage times the switching period \(\vec{V}_{ref} \cdot T_s\). With the term \(\vec{V}_0 \cdot T_0 = 0\), we can simplify the equation to equation (2)
@@ -156,7 +156,23 @@
 
 <h3>General Algorithm</h3>
 <p> 
-    Show example of 1 sector
+    In this article, have derived some equations to calculate the duty cycle of each PWM output phase through the dwell time of each vector state where the reference voltage vector lies. 
+    To summarize, the algorithm to generate SVPWM duty cycle is:
+
+    <ol>
+    <li>Find the sector where the reference voltage vector lies in the hexagon \(\theta = \tan^{-1}{ \left ( \frac{V_{\beta}}{V_{\alpha}}\right )}\)</li>
+    <li>Calculate angle relative to the switching vector \(\vec{V}_n\) with \(\phi = \theta - \theta_{n-sector}\).</li>
+    <li>Determine which sector switches first after zero vectors. Only one phase can switch at a time, so determine wisely.</li>
+    <li>Calculate dwell time using equation (5)</li>
+    <li>Determine which phase belongs to /(T_1/) and /(T_2/) and calculate duty cycle using equation (6) and (7)</li>
+    <li>Repeat the above steps for electrical angle update</li>
+    </ol>
+</p>
+
+<p> 
+    As we can see, the algorithm is quite simple. However, it is not efficient as it requires the use of arc-tangent functions, trigonometric and square root operations, and a lot of if-else logic.
+    In the next article, we will take a look at an efficient algorithm to calculate the duty cycle of each PWM output phase by the means of the Min-Max Injection technique or Third-Harmonic injection
+    algorithm.
 </p>
 
 <div class="references">
@@ -165,6 +181,6 @@
         <li>J. G. Kassakian, D. J. Perreault, G. C. Verghese, and M. F. Schlecht, Principles of Power Electronics, 2nd ed. Cambridge: Cambridge University Press, 2023. </li>
         <li>Y. Solbakken, “Space Vector PWM Intro,” Switchcraft. https://www.switchcraft.org/learning/2017/3/15/space-vector-pwm-intro‌</li>
         <li>B. Steinmann, “SV-PWM - Space vector PWM - imperix software documentation,” imperix, Apr. 02, 2021. https://imperix.com/doc/software/sv-pwm</li>
-        <li>S. Strobl. , “SVPWM vs SPWM modulation techniques,” imperix, Aug. 19, 2021. https://imperix.com/doc/implementation/svpwm-vs-spwm-modulation-techniques</li>
+        <li>S. Strobl, “SVPWM vs SPWM modulation techniques,” imperix, Aug. 19, 2021. https://imperix.com/doc/implementation/svpwm-vs-spwm-modulation-techniques</li>
     </ol>
 </div>                         
