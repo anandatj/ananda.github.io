@@ -56,17 +56,37 @@
 </figure>
 
 <!---Add -->
-
+<h3>Calculating The Duty Cycle</h3>
 <p> 
-    How can we calculate this dwell time? The total duty cycle of the output should be equal to the switching period of the PWM. By finding the sum 
-    of the dot product results each correspending vector, we can calculate the dwell time of each switching vector state and use these dwell time values
-    to calculate the duty cycle of each output phase.
+    How can we get the dwell time of each vector state? We already know from Equation (1) that the total dwell time of each vector state \(\vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2 + \vec{V}_0 \cdot T_0\)
+    is equal to the reference voltage times the switching period \(\vec{V}_{ref} \cdot T_s\). With the term \(\vec{V}_0 \cdot T_0 = 0\), we can simplify the equation to equation (2)
 </p>
 
-<h3>Analyzing A Sector (Example)</h3>
+<div class="math-container">
+    \begin{equation} 
+        \vec{V}_{ref} \cdot T_s = \vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2
+        \label{eq:2}
+    \end{equation}
+</div>
+
 <p> 
-    Show example of 1 sector
+    With each sector being \( 60^{\circ} = \pi / 3 \ \mathrm{rad} \) apart, and the internal angle between the switching vector \(\vec{V}_n\) and the switching vector after it
+    \(\vec{V}_{n+1}\) being \( \pi - (\pi/3) = 2\pi/3 \ \mathrm{rad}\) or \(120^{\circ} \), we are able to project the reference voltage vector onto each adjacent switching vector by trigonometric
+    'Law of Sine' calculation shown in equation (3).  Mapping the reference vector and adjacent switching vectors into a triangle results in equation (3).
 </p>
+
+<div class="math-container">
+    \begin{align} 
+        \frac{a}{\sin{\left ( \alpha \right )}} = \frac{b}{\sin{\left ( \beta \right )}}= \frac{c}{\sin{\left ( \gamma \right )}}
+        \label{eq:3}
+    \end{align}
+
+    \begin{align} 
+        \frac{\lvert \vec{V}_{ref} \rvert \ T_s}{\sin{ \left ( \frac{2\pi}{3} \right )}} &= \frac{\lvert \vec{V}_{1} \rvert \ T_1}{\sin{ \left ( \frac{\pi}{3}-\alpha \right ) }} 
+        = \frac{\lvert \vec{V}_{2} \rvert \ T_2}{\sin{ \left ( \alpha \right ) }}
+        \label{eq:4}
+    \end{align}
+</div>
 
 <h3>General Algorithm</h3>
 <p> 
