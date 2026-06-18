@@ -61,16 +61,26 @@ const projectsData = [
 // Blog Data
 const blogData = [
     {
-        title: "Why SVPWM and How?",
-        description: "An exploration of how and why Space Vector Pulse Width Modulation (SVPWM) is used in modern power electronics.",
+        title: "Understanding SVPWM (Part 1) - Basics",
+        description: "How and why Space Vector Pulse Width Modulation (SVPWM) is used in modern power electronics.",
         image: "./articles/src/SVPWM-BASIC.svg",
         link: "#",
         linkText: "Read Article",
         articleFile: "./articles/svpwm_article.html" 
     },
     {
+        title: "Understanding SVPWM (Part 2) - Efficient Algorithm",
+        description: "Reducing if-else logic in implementing SVPWM (Work in Progress)",
+        image: "./src/MinMax_Injection.svg",
+    },
+    {
+        title: "Understanding SVPWM (Part 3) - Implementation",
+        description: "Implementing SVPWM in STM32 (Work in Progress)",
+        image: "./src/svpwm.png",
+    },
+    {
         title: "Soviet Mechanical Watch Repair",
-        description: "Repaired my father's Vostok Amphibia watch from the 80s that had a main spring problem (in progress).",
+        description: "Repaired my father's Vostok Amphibia watch from the 80s that had a main spring problem (Work in Progress).",
         image: "./src/vostok.jpg",
         //link: "#",
         //linkText: "Read Article (In Progress)"

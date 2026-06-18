@@ -1,6 +1,14 @@
 <!---SVPWM Article file, Latex compatibilty-->
 
-<h1>Why SVPWM and How?</h1>
+<h1>Understanding SVPWM (Part 1) - Basics</h1>
+
+<p> 
+    Welcome to my first article on SVPWM, this article will cover the basics and (slightly) mathematical approach on SVPWM.
+    I am writing this article because it took me a while to understand the basic concept of SVPWM, so I wrap this article up
+    in a way that made it easy for me to understand the concept and implement it in my project. I hope you enjoy reading this article!
+</p>
+
+<h3>Why SVPWM?</h3>
 
 <p> 
     Space Vector Pulse Width Modulation (SVPWM) is an advanced technique for generating sinusoidal voltage ouptut through a digital PWM carrier wave. 
@@ -91,7 +99,7 @@
 
 <p> 
     The value of the \(\vec{V_1}\) and \(\vec{V_2}\) is the maximum amplitude of the space vector hexagon shown in Fig 1.
-    In the alpha-beta plane, this maximum value is equal to \(\frac{2}{3}V_DC\) and the angle of the reference vector is denoted as \(\theta\).
+    In the alpha-beta plane, this maximum value is equal to \(\frac{2}{3}V_{DC}\) and the angle of the reference vector is denoted as \(\theta\).
     By simplifying equation (4) for each term, we can get \(T_1\) and \(T_2\), which would also give us the zero vectors dwell time \(T_0\). 
     The dwell time equation are shown in equation (5).
 </p>
@@ -99,17 +107,19 @@
 <div class="math-container">
     \begin{align} 
     \begin{split}
-    \therefore \qquad &\ \\
-        T_1 &= \frac{\sqrt{3} \lvert V_{ref} \rvert T_s}{V_{DC}} \ \sin{\left( \frac{\pi}{3}-\theta \right )} \\
-        T_2 &= \frac{\sqrt{3} \lvert V_{ref} \rvert T_s}{V_{DC}} \ \sin{\left( \theta \right )} \\ 
-        T_0 &= T_s - T_1 - T_2
+    
+                        T_1 &= \frac{\sqrt{3} \lvert V_{ref} \rvert T_s}{V_{DC}} \ \sin{\left( \frac{\pi}{3}-\theta \right )} \\
+    \therefore \qquad   T_2 &= \frac{\sqrt{3} \lvert V_{ref} \rvert T_s}{V_{DC}} \ \sin{\left( \theta \right )} \\ 
+                        T_0 &= T_s - T_1 - T_2
     \end{split}
         \label{eq:5}
     \end{align}
 </div>
 
 <p> 
-    Let there be a reference voltage vector with an angle that exists in sector 1 (\(0 \lt \theta \lt \frac{\pi}{3} \)), the PWM waveform of each phase can be visualized in Fig 3.
+    Let there be a reference voltage vector with an angle that exists in sector 1 (\(0 \lt \theta \lt \frac{\pi}{3} \ \mathrm{rad}\)), the estimated PWM waveform will look like Fig 3.
+    I have made the plot to look more intuitive by also showing which vector turns on for how long, which allows us to translate each dwell time into a duty cycle
+    that we can implement in our simulation or microcontroller application.
 </p>
 
 <figure>
@@ -117,12 +127,34 @@
     <figcaption>Fig 3. Time Domain SVPWM Visualization on a Single PWM Period </figcaption>
 </figure>
 
-<h3>General Algorithm</h3>
 <p> 
-    Show example of 1 sector
+    From the sequential plot shown in Fig 3, we could find the ON period of each PWM output by doing basic artihmetic operations shown in equation (6) and normalizing 
+    the period with the switching period \(T_s\) so we are able to get the duty cycle of each output phase shown in equation (7).
 </p>
 
-<h3>More Efficient Algorithm</h3>
+<div class="math-container">
+    \begin{align} 
+    \begin{split}
+        T_A &= \frac{T_0}{2} + T_1 + T_2 \\
+        T_B &= \frac{T_0}{2} + T_2 \\ 
+        T_C &= T_0 
+    \end{split}
+    \label{eq:6}
+    \end{align}
+</div>    
+
+<div class="math-container">
+    \begin{align}
+    \begin{split}
+                        D_A &= \frac{T_A}{T_s} \\
+    \therefore \quad    D_B &= \frac{T_B}{T_s} \\ 
+                        D_C &= \frac{T_C}{T_s}\\
+    \end{split}
+    \label{eq:7}
+    \end{align}
+</div>
+
+<h3>General Algorithm</h3>
 <p> 
     Show example of 1 sector
 </p>
@@ -130,7 +162,9 @@
 <div class="references">
     <h4>References</h4>
     <ol>
-        <li>Ananda T. Adisurja, "Motor Drive Parameter Estimation," IEEE APEC 2025, Atlanta, GA. <a href="https://ieeexplore.ieee.org/document/10977308" target="_blank">Link</a></li>
-        <li>Author B, "Another Power Electronics Paper," Journal of Engineering, 2023.</li>
+        <li>J. G. Kassakian, D. J. Perreault, G. C. Verghese, and M. F. Schlecht, Principles of Power Electronics, 2nd ed. Cambridge: Cambridge University Press, 2023. </li>
+        <li>Y. Solbakken, “Space Vector PWM Intro,” Switchcraft. https://www.switchcraft.org/learning/2017/3/15/space-vector-pwm-intro‌</li>
+        <li>B. Steinmann, “SV-PWM - Space vector PWM - imperix software documentation,” imperix, Apr. 02, 2021. https://imperix.com/doc/software/sv-pwm</li>
+        <li>S. Strobl. , “SVPWM vs SPWM modulation techniques,” imperix, Aug. 19, 2021. https://imperix.com/doc/implementation/svpwm-vs-spwm-modulation-techniques</li>
     </ol>
 </div>                         
