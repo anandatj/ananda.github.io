@@ -23,7 +23,7 @@
 
 <p>
     The fundamental principle involves representing the 3-phase voltages as a single rotating space vector 
-    in the \(\alpha\) and \(\beta\) reference frame. The reference voltage vector 
+    in the \(\theta\) and \(\beta\) reference frame. The reference voltage vector 
     \( \vec{V}_{ref} \) is synthesized using the two adjacent active vectors and the zero vectors within 
     a specific sector of the hexagon as shown in Fig 1. 
 </p>
@@ -72,7 +72,8 @@
 <p> 
     With each sector being \( 60^{\circ} = \pi / 3 \ \mathrm{rad} \) apart, and the internal angle between the switching vector \(\vec{V}_n\) and the switching vector after it
     \(\vec{V}_{n+1}\) being \( \pi - (\pi/3) = 2\pi/3 \ \mathrm{rad}\) or \(120^{\circ} \), we are able to project the reference voltage vector onto each adjacent switching vector by trigonometric
-    'Law of Sine' calculation shown in equation (3).  Mapping the reference vector and adjacent switching vectors into a triangle results in equation (3).
+    'Law of Sine' calculation shown in equation (3).  Mapping the reference vector and adjacent switching vectors into a triangle results in each vector's magnitude relationship
+    with the reference voltage vector angle, shown in equation (4).
 </p>
 
 <div class="math-container">
@@ -82,11 +83,39 @@
     \end{align}
 
     \begin{align} 
-        \frac{\lvert \vec{V}_{ref} \rvert \ T_s}{\sin{ \left ( \frac{2\pi}{3} \right )}} &= \frac{\lvert \vec{V}_{1} \rvert \ T_1}{\sin{ \left ( \frac{\pi}{3}-\alpha \right ) }} 
-        = \frac{\lvert \vec{V}_{2} \rvert \ T_2}{\sin{ \left ( \alpha \right ) }}
+        \frac{\lvert \vec{V}_{ref} \rvert \ T_s}{\sin{ \left ( \frac{2\pi}{3} \right )}} &= \frac{\lvert \vec{V}_{1} \rvert \ T_1}{\sin{ \left ( \frac{\pi}{3}-\theta \right ) }} 
+        = \frac{\lvert \vec{V}_{2} \rvert \ T_2}{\sin{ \left ( \theta \right ) }}
         \label{eq:4}
     \end{align}
 </div>
+
+<p> 
+    The value of the \(\vec{V_1}\) and \(\vec{V_2}\) is the maximum amplitude of the space vector hexagon shown in Fig 1.
+    In the alpha-beta plane, this maximum value is equal to \(\frac{2}{3}V_DC\) and the angle of the reference vector is denoted as \(\theta\).
+    By simplifying equation (4) for each term, we can get \(T_1\) and \(T_2\), which would also give us the zero vectors dwell time \(T_0\). 
+    The dwell time equation are shown in equation (5).
+</p>
+
+<div class="math-container">
+    \begin{align} 
+    \begin{split}
+    \therefore \qquad &\ \\
+        T_1 &= \frac{\sqrt{3} \lvert V_{ref} \rvert T_s}{V_{DC}} \ \sin{\left( \frac{\pi}{3}-\theta \right )} \\
+        T_2 &= \frac{\sqrt{3} \lvert V_{ref} \rvert T_s}{V_{DC}} \ \sin{\left( \theta \right )} \\ 
+        T_0 &= T_s - T_1 - T_2
+    \end{split}
+        \label{eq:5}
+    \end{align}
+</div>
+
+<p> 
+    Let there be a reference voltage vector with an angle that exists in sector 1 (\(0 \lt \theta \lt \frac{\pi}{3} \)), the PWM waveform of each phase can be visualized in Fig 3.
+</p>
+
+<figure>
+    <img src="./articles/src/SVPWM_Timing_web.svg" alt="SVPWM timing" width="800">
+    <figcaption>Fig 3. Time Domain SVPWM Visualization on a Single PWM Period </figcaption>
+</figure>
 
 <h3>General Algorithm</h3>
 <p> 
