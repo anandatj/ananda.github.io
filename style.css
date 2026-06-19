@@ -297,6 +297,35 @@ p { font-size: 1.125rem; color: var(--text-muted); max-width: 800px; margin-bott
 .article-content h3 { font-size: 1.5rem; color: var(--text-main); margin: 2rem 0 1rem; }
 .article-content p { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 100%; }
 
+/* Article Metadata (Author & Date) */
+.article-content .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: -0.5rem; /* Pulls it closer to the h1 title */
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.article-content .article-meta .author {
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+/* Automatically adds "Written by " in gray before the author name */
+.article-content .article-meta .author::before {
+    content: "Written by ";
+    color: var(--text-muted); /* Gray color */
+    font-weight: normal; /* Removes the bold styling from this specific text */
+}
+
+.article-content .article-meta .date {
+    font-style: italic;
+}
+
 .article-content img {
     max-width: 70%;
     /* Adjust this percentage to make it larger or smaller */

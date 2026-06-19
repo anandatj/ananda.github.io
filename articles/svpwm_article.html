@@ -2,10 +2,17 @@
 
 <h1>Understanding SVPWM (Part 1) - Basics</h1>
 
+<div class="article-meta">
+    <span class="author">Ananda Tjakra Adisurja</span>
+    <span class="date">Published: June 19, 2026</span>
+</div>
+
 <p> 
-    Welcome to my first article on SVPWM, this article will cover the basics and (slightly) mathematical approach on SVPWM.
-    I am writing this article because it took me a while to understand the basic concept of SVPWM. I tried to wrap this article up
-    in a way that made it easy for me to understand the concept and implement it in my project. I hope you enjoy reading this article!
+    Welcome to my first article on SVPWM! This article will cover the basics and (slightly) mathematical approach on SVPWM.
+    I finally understood the method of implementing this technique after some years of just barely understanding it and using MATLAB libraries
+    in my personal projects. I am writing this article in a way that made it easy for me to understand the concept and implement it in my project
+    with a more intuitive plots and graphs that I designed myself. 
+    I hope you enjoy reading this article!
 </p>
 
 <h3>Why SVPWM?</h3>
@@ -17,7 +24,6 @@
     the peak output voltage of \(V_{peak} = \frac{V_{DC}}{2}\). SVPWM, on the other hand allows a higher output voltage of \(V_{peak} = \frac{V_{DC}}{\sqrt{3}}\) 
     which is around \(15.47 \% \) more than half of the DC bus voltage without overmodulating the output voltage.
 </p>
-
 
 <!---SVPWM hexagon image-->
 
@@ -31,7 +37,7 @@
 
 <p>
     The fundamental principle involves representing the 3-phase voltages as a single rotating space vector 
-    in the \(\theta\) and \(\beta\) reference frame. The reference voltage vector 
+    in the \(\alpha\) and \(\beta\) reference frame. The reference voltage vector 
     \( \vec{V}_{ref} \) is synthesized using the two adjacent active vectors and the zero vectors within 
     a specific sector of the hexagon as shown in Fig 1. 
 </p>
@@ -99,7 +105,7 @@
 
 <p> 
     The value of the \(\vec{V_1}\) and \(\vec{V_2}\) is the maximum amplitude of the space vector hexagon shown in Fig 1.
-    In the alpha-beta plane, this maximum value is equal to \(\frac{2}{3}V_{DC}\) and the angle of the reference vector is denoted as \(\theta\).
+    In the alpha-beta plane, this maximum value is equal to \(\frac{2}{3}V_{DC}\) and the angle of the reference vector is denoted as \(\theta.\)
     By simplifying equation (4) for each term, we can get \(T_1\) and \(T_2\), which would also give us the zero vectors dwell time \(T_0\). 
     The dwell time equation are shown in equation (5).
 </p>
@@ -137,7 +143,7 @@
     \begin{split}
         T_A &= \frac{T_0}{2} + T_1 + T_2 \\
         T_B &= \frac{T_0}{2} + T_2 \\ 
-        T_C &= T_0 
+        T_C &= \frac{T_0}{2} 
     \end{split}
     \label{eq:6}
     \end{align}
@@ -156,23 +162,27 @@
 
 <h3>General Algorithm</h3>
 <p> 
-    In this article, have derived some equations to calculate the duty cycle of each PWM output phase through the dwell time of each vector state where the reference voltage vector lies. 
+    In this article, have derived some equations to calculate the duty cycle of each PWM output phase through the dwell time of each vector state where the reference voltage vector is located. 
     To summarize, the algorithm to generate SVPWM duty cycle is:
 
     <ol>
     <li>Find the sector where the reference voltage vector lies in the hexagon \(\theta = \tan^{-1}{ \left ( \frac{V_{\beta}}{V_{\alpha}}\right )}\)</li>
     <li>Calculate angle relative to the switching vector \(\vec{V}_n\) with \(\phi = \theta - \theta_{n-sector}\).</li>
-    <li>Determine which sector switches first after zero vectors. Only one phase can switch at a time, so determine wisely.</li>
+    <li>Determine which sector switches first after zero vectors. Only one phase can switch at a time (ex: 000 -> 010 -> 011 -> 111)</li>
     <li>Calculate dwell time using equation (5)</li>
-    <li>Determine which phase belongs to /(T_1/) and /(T_2/) and calculate duty cycle using equation (6) and (7)</li>
+    <li>Calculate switching period and duty cycle using equation (6) and (7)</li>
     <li>Repeat the above steps for electrical angle update</li>
     </ol>
+
 </p>
 
 <p> 
-    As we can see, the algorithm is quite simple. However, it is not efficient as it requires the use of arc-tangent functions, trigonometric and square root operations, and a lot of if-else logic.
-    In the next article, we will take a look at an efficient algorithm to calculate the duty cycle of each PWM output phase by the means of the Min-Max Injection technique or Third-Harmonic injection
-    algorithm.
+    As we can see, the algorithm is quite simple. However, it is not efficient as it requires the use of arc-tangent functions, trigonometric and square root operations, and lots of if-else logic, which
+    renders this method far more computationally expensive than a regular sinusoidal PWM generation method. In a MATLAB or Simulink simulation, this
+    method does not have any impact in the simulation, but in a real hardware control system that requires a high frequency switching, this longer computation could significantly affect the timing of the microcontroller
+    which could lead to system instability if the controller update time is consumed by the SVPWM algorithm.
+    In the next article, we will take a look at a more efficient algorithm to calculate the duty cycle of each PWM output phase by the means of 
+    the Min-Max Injection technique or Third-Harmonic injectionalgorithm.
 </p>
 
 <div class="references">
