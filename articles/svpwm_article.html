@@ -10,7 +10,7 @@
 <p> 
     Welcome to my first article on SVPWM! This article will cover the basics and (slightly) mathematical approach on SVPWM.
     I finally understood the method of implementing this technique after some years of just barely understanding it and using MATLAB libraries
-    in my personal projects. I am writing this article in a way that made it easy for me to understand the concept and implement it in my project
+    in my personal projects. I am wrote this article in a way that made it easy for me to understand and implement it in my project
     with a more intuitive plots and graphs that I designed myself. 
     I hope you enjoy reading this article!
 </p>
@@ -43,9 +43,9 @@
 </p>
 
 <p>
-    The reference voltage vector \( \vec{V}_{ref} \) is synthesized by projecting the vector to the adjacent vectors of the hexagon
-    sector \(\vec{V}_{n} \) and \(\vec{V}_{n+1} \). This projection then determines the duration of the dwell time for each 
-    vector state. On a single switching period, the total dwell time of each switching vector and zero vectors shown in equation (1).
+    The reference voltage vector \( \vec{V}_{ref} \) is projected onto the adjacent vectors of the hexagon
+    sector \(\vec{V}_{n} \) and \(\vec{V}_{n+1} \) and this projection then determines the duration of the dwell time for each 
+    active vectors. On a single switching period, the total dwell time of each switching vector and zero vectors shown in equation (1).
 </p>
 
 <div class="math-container">
@@ -56,7 +56,7 @@
 </div>
         
 <p>
-    Where \( T_s \) is the switching period, and \( T_1, T_2, T_0 \) are the respective dwell times for each vector state.  
+    Where \( T_s \) is the switching period, and \( T_1, T_2, T_0 \) are the respective dwell times for each switching vector.  
 </p>
 
 <p>
@@ -72,7 +72,7 @@
 <!---Add -->
 <h3>Synthesizing The Duty Cycle</h3>
 <p> 
-    How can we get the dwell time of each vector state? We already know from Equation (1) that the total dwell time of each vector state \(\vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2 + \vec{V}_0 \cdot T_0\)
+    How can we get the dwell time of each vector state? We already know from equation (1) that the total dwell time of each vector state \(\vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2 + \vec{V}_0 \cdot T_0\)
     is equal to the reference voltage times the switching period \(\vec{V}_{ref} \cdot T_s\). With the term \(\vec{V}_0 \cdot T_0 = 0\), we can simplify the equation to equation (2)
 </p>
 
@@ -123,8 +123,9 @@
 </div>
 
 <p> 
-    Let there be a reference voltage vector with an angle that exists in sector 1 (\(0 \lt \theta \lt \frac{\pi}{3} \ \mathrm{rad}\)), the estimated PWM waveform will look like Fig 3.
-    I have made the plot to look more intuitive by also showing which vector turns on for how long, which allows us to translate each dwell time into a duty cycle
+    Let's say that there is a reference voltage vector with an angle that exists in sector 1 (\(0 \lt \theta \lt \frac{\pi}{3} \ \mathrm{rad}\)), the estimated PWM waveform on
+    a single period will look like Fig 3.
+    I have made the plot to look more intuitive by also showing vector turn on durations, which allows us to translate each dwell time into a duty cycle
     that we can implement in our simulation or microcontroller application.
 </p>
 
@@ -162,7 +163,7 @@
 
 <h3>General Algorithm</h3>
 <p> 
-    In this article, have derived some equations to calculate the duty cycle of each PWM output phase through the dwell time of each vector state where the reference voltage vector is located. 
+    We have derived some equations to calculate the duty cycle of each PWM output phase through the dwell time of each vector state where the reference voltage vector is located. 
     To summarize, the algorithm to generate SVPWM duty cycle is:
 
     <ol>
@@ -181,8 +182,11 @@
     renders this method far more computationally expensive than a regular sinusoidal PWM generation method. In a MATLAB or Simulink simulation, this
     method does not have any impact in the simulation, but in a real hardware control system that requires a high frequency switching, this longer computation could significantly affect the timing of the microcontroller
     which could lead to system instability if the controller update time is consumed by the SVPWM algorithm.
-    In the next article, we will take a look at a more efficient algorithm to calculate the duty cycle of each PWM output phase by the means of 
-    the Min-Max Injection technique or Third-Harmonic injectionalgorithm.
+</p>
+
+<p>
+    In the next article (part 2), we will take a look at a more efficient algorithm to calculate the duty cycle of each PWM output phase by the means of 
+    the Min-Max Injection technique or Third-Harmonic injection algorithm.
 </p>
 
 <div class="references">
