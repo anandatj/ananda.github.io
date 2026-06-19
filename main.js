@@ -63,7 +63,7 @@ const blogData = [
     {
         title: "Understanding SVPWM (Part 1) - Basics",
         description: "How and why Space Vector Pulse Width Modulation (SVPWM) is used in modern power electronics.",
-        image: "./articles/src/SVPWM-BASIC.svg",
+        image: "./articles/src/SVPWM-Basic.svg",
         link: "#",
         linkText: "Read Article",
         articleFile: "./articles/svpwm_article.html" 
