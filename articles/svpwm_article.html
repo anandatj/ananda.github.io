@@ -1,0 +1,200 @@
+<!---SVPWM Article file, Latex compatibilty-->
+
+<h1>Understanding SVPWM (Part 1) - Basics</h1>
+
+<div class="article-meta">
+    <span class="author">Ananda Tjakra Adisurja</span>
+    <span class="date">Published: June 19, 2026</span>
+</div>
+
+<p> 
+    Welcome to my first article on SVPWM! This article will cover the basics and (slightly) mathematical approach on SVPWM.
+    I finally understood the method of implementing this technique after some years of just barely understanding it and using MATLAB libraries
+    in my personal projects. I am wrote this article in a way that made it easy for me to understand and implement it in my project
+    with a more intuitive plots and graphs that I designed myself. 
+    I hope you enjoy reading this article!
+</p>
+
+<h3>Why SVPWM?</h3>
+
+<p> 
+    Space Vector Pulse Width Modulation (SVPWM) is an advanced technique for generating sinusoidal voltage ouptut through a digital PWM carrier wave. 
+    It provides higher DC bus voltage utilization and less harmonic distortion compared to traditional Sinusoidal PWM (SPWM) generation method. SPWM is the most 
+    commonly used method for generating sinusoidal voltage as it is simple and quick by comparing a sinusoidal reference voltage to a carrier wave, but it limits
+    the peak output voltage of \(V_{peak} = \frac{V_{DC}}{2}\). SVPWM, on the other hand allows a higher output voltage of \(V_{peak} = \frac{V_{DC}}{\sqrt{3}}\) 
+    which is around \(15.47 \% \) more than half of the DC bus voltage without overmodulating the output voltage.
+</p>
+
+<!---SVPWM hexagon image-->
+
+<figure>
+    <img src="./articles/src/SVPWM-BASIC.svg" alt="SVPWM Hexagon" width="500">
+    <figcaption>Fig 1. Switching Sector Hexagon</figcaption>
+</figure>
+
+        
+<h3>The Basic Concept</h3>
+
+<p>
+    The fundamental principle involves representing the 3-phase voltages as a single rotating space vector 
+    in the \(\alpha\) and \(\beta\) reference frame. The reference voltage vector 
+    \( \vec{V}_{ref} \) is synthesized using the two adjacent active vectors and the zero vectors within 
+    a specific sector of the hexagon as shown in Fig 1. 
+</p>
+
+<p>
+    The reference voltage vector \( \vec{V}_{ref} \) is projected onto the adjacent vectors of the hexagon
+    sector \(\vec{V}_{n} \) and \(\vec{V}_{n+1} \) and this projection then determines the duration of the dwell time for each 
+    active vectors. On a single switching period, the total dwell time of each switching vector and zero vectors shown in equation (1).
+</p>
+
+<div class="math-container">
+    \begin{equation} 
+        \vec{V}_{ref} \cdot T_s = \vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2 + \vec{V}_0 \cdot T_0
+        \label{eq:1}
+    \end{equation}
+</div>
+        
+<p>
+    Where \( T_s \) is the switching period, and \( T_1, T_2, T_0 \) are the respective dwell times for each switching vector.  
+</p>
+
+<p>
+    These dwell times then can be used to calculate the duty cycle of each output phase. An animated visualization of
+    how the duty cycle changes with the reference voltage angle is shown in Fig 2.
+</p>
+
+<figure>
+    <img src="./articles/src/svpwm_animation.gif.gif" alt="SVPWM Hexagon" width="500">
+    <figcaption>Fig 2. SVPWM Switching Animation Based on Reference Voltage Angle </figcaption>
+</figure>
+
+<!---Add -->
+<h3>Synthesizing The Duty Cycle</h3>
+<p> 
+    How can we get the dwell time of each vector state? We already know from equation (1) that the total dwell time of each vector state \(\vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2 + \vec{V}_0 \cdot T_0\)
+    is equal to the reference voltage times the switching period \(\vec{V}_{ref} \cdot T_s\). With the term \(\vec{V}_0 \cdot T_0 = 0\), we can simplify the equation to equation (2)
+</p>
+
+<div class="math-container">
+    \begin{equation} 
+        \vec{V}_{ref} \cdot T_s = \vec{V}_1 \cdot T_1 + \vec{V}_2 \cdot T_2
+        \label{eq:2}
+    \end{equation}
+</div>
+
+<p> 
+    With each sector being \( 60^{\circ} = \pi / 3 \ \mathrm{rad} \) apart, and the internal angle between the switching vector \(\vec{V}_n\) and the switching vector after it
+    \(\vec{V}_{n+1}\) being \( \pi - (\pi/3) = 2\pi/3 \ \mathrm{rad}\) or \(120^{\circ} \), we are able to project the reference voltage vector onto each adjacent switching vector by trigonometric
+    'Law of Sine' calculation shown in equation (3).  Mapping the reference vector and adjacent switching vectors into a triangle results in each vector's magnitude relationship
+    with the reference voltage vector angle, shown in equation (4).
+</p>
+
+<div class="math-container">
+    \begin{align} 
+        \frac{a}{\sin{\left ( \alpha \right )}} = \frac{b}{\sin{\left ( \beta \right )}}= \frac{c}{\sin{\left ( \gamma \right )}}
+        \label{eq:3}
+    \end{align}
+
+    \begin{align} 
+        \frac{\lvert \vec{V}_{ref} \rvert \ T_s}{\sin{ \left ( \frac{2\pi}{3} \right )}} &= \frac{\lvert \vec{V}_{1} \rvert \ T_1}{\sin{ \left ( \frac{\pi}{3}-\theta \right ) }} 
+        = \frac{\lvert \vec{V}_{2} \rvert \ T_2}{\sin{ \left ( \theta \right ) }}
+        \label{eq:4}
+    \end{align}
+</div>
+
+<p> 
+    The value of the \(\vec{V_1}\) and \(\vec{V_2}\) is the maximum amplitude of the space vector hexagon shown in Fig 1.
+    In the alpha-beta plane, this maximum value is equal to \(\frac{2}{3}V_{DC}\) and the angle of the reference vector is denoted as \(\theta.\)
+    By simplifying equation (4) for each term, we can get \(T_1\) and \(T_2\), which would also give us the zero vectors dwell time \(T_0\). 
+    The dwell time equation are shown in equation (5).
+</p>
+
+<div class="math-container">
+    \begin{align} 
+    \begin{split}
+    
+                        T_1 &= \frac{\sqrt{3} \lvert V_{ref} \rvert T_s}{V_{DC}} \ \sin{\left( \frac{\pi}{3}-\theta \right )} \\
+    \therefore \qquad   T_2 &= \frac{\sqrt{3} \lvert V_{ref} \rvert T_s}{V_{DC}} \ \sin{\left( \theta \right )} \\ 
+                        T_0 &= T_s - T_1 - T_2
+    \end{split}
+        \label{eq:5}
+    \end{align}
+</div>
+
+<p> 
+    Let's say that there is a reference voltage vector with an angle that exists in sector 1 (\(0 \lt \theta \lt \frac{\pi}{3} \ \mathrm{rad}\)), the estimated PWM waveform on
+    a single period will look like Fig 3.
+    I have made the plot to look more intuitive by also showing vector turn on durations, which allows us to translate each dwell time into a duty cycle
+    that we can implement in our simulation or microcontroller application.
+</p>
+
+<figure>
+    <img src="./articles/src/SVPWM_Timing_web.svg" alt="SVPWM timing" width="800">
+    <figcaption>Fig 3. Time Domain SVPWM Visualization on a Single PWM Period </figcaption>
+</figure>
+
+<p> 
+    From the sequential plot shown in Fig 3, we could find the ON period of each PWM output by doing basic artihmetic operations shown in equation (6) and normalizing 
+    the period with the switching period \(T_s\) so we are able to get the duty cycle of each output phase shown in equation (7).
+</p>
+
+<div class="math-container">
+    \begin{align} 
+    \begin{split}
+        T_A &= \frac{T_0}{2} + T_1 + T_2 \\
+        T_B &= \frac{T_0}{2} + T_2 \\ 
+        T_C &= \frac{T_0}{2} 
+    \end{split}
+    \label{eq:6}
+    \end{align}
+</div>    
+
+<div class="math-container">
+    \begin{align}
+    \begin{split}
+                        D_A &= \frac{T_A}{T_s} \\
+    \therefore \quad    D_B &= \frac{T_B}{T_s} \\ 
+                        D_C &= \frac{T_C}{T_s}\\
+    \end{split}
+    \label{eq:7}
+    \end{align}
+</div>
+
+<h3>General Algorithm</h3>
+<p> 
+    We have derived some equations to calculate the duty cycle of each PWM output phase through the dwell time of each vector state where the reference voltage vector is located. 
+    To summarize, the algorithm to generate SVPWM duty cycle is:
+
+    <ol>
+    <li>Find the sector where the reference voltage vector lies in the hexagon \(\theta = \tan^{-1}{ \left ( \frac{V_{\beta}}{V_{\alpha}}\right )}\)</li>
+    <li>Calculate angle relative to the switching vector \(\vec{V}_n\) with \(\phi = \theta - \theta_{n-sector}\).</li>
+    <li>Determine which sector switches first after zero vectors. Only one phase can switch at a time (ex: 000 -> 010 -> 011 -> 111)</li>
+    <li>Calculate dwell time using equation (5)</li>
+    <li>Calculate switching period and duty cycle using equation (6) and (7)</li>
+    <li>Repeat the above steps for electrical angle update</li>
+    </ol>
+
+</p>
+
+<p> 
+    As we can see, the algorithm is quite simple. However, it is not efficient as it requires the use of arc-tangent functions, trigonometric and square root operations, and lots of if-else logic, which
+    renders this method far more computationally expensive than a regular sinusoidal PWM generation method. In a MATLAB or Simulink simulation, this
+    method does not have any impact in the simulation, but in a real hardware control system that requires a high frequency switching, this longer computation could significantly affect the timing of the microcontroller
+    which could lead to system instability if the controller update time is consumed by the SVPWM algorithm.
+</p>
+
+<p>
+    In the next article (part 2), we will take a look at a more efficient algorithm to calculate the duty cycle of each PWM output phase by the means of 
+    the Min-Max Injection technique or Third-Harmonic injection algorithm.
+</p>
+
+<div class="references">
+    <h4>References</h4>
+    <ol>
+        <li>J. G. Kassakian, D. J. Perreault, G. C. Verghese, and M. F. Schlecht, Principles of Power Electronics, 2nd ed. Cambridge: Cambridge University Press, 2023. </li>
+        <li>Y. Solbakken, “Space Vector PWM Intro,” Switchcraft. https://www.switchcraft.org/learning/2017/3/15/space-vector-pwm-intro‌</li>
+        <li>B. Steinmann, “SV-PWM - Space vector PWM - imperix software documentation,” imperix, Apr. 02, 2021. https://imperix.com/doc/software/sv-pwm</li>
+        <li>S. Strobl, “SVPWM vs SPWM modulation techniques,” imperix, Aug. 19, 2021. https://imperix.com/doc/implementation/svpwm-vs-spwm-modulation-techniques</li>
+    </ol>
+</div>                         

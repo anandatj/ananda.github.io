@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ananda | Portfolio</title>
+    
+    <script>
+        MathJax = {
+            tex: {
+                tags: 'ams' // Enables automatic equation numbering for \begin{equation} blocks
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +26,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="#blog">Blogs</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -42,28 +52,34 @@
     </section>
 
     <section id="blog">
-        <h2>Blog</h2>
+        <h2>Blogs & Articles</h2>
         <p>Some interesting things I have been doing recently.</p>
         <div class="grid-layout" id="blog-container"></div>
     </section>
 
-  <!-- Contact Section -->
     <section id="contact">
         <h2>Get In Touch</h2>
         <div class="contact-box">
             <div class="profile-photo">
-                <!-- Replace the src link below with the path to your actual photo (e.g., "images/my-photo.jpg") -->
                 <img src="./src/WEB_IMG20230917173222~2.jpg" alt="Hey it's me, Ananda">
             </div>
             <p>Currently exploring opportunities for a PhD program in Power Electronics and Motor Drive!</p><p> I am always open to discussing power electronics, motor drive control, modern control systems, system modeling, renewable energy integration to the grid, and other possible collaborations.</p>
             <a href="mailto:anandatjakra.007@gmail.com" class="btn">Say Hello!</a>
-            
             <div class="social-links">
                 <a href="https://github.com/anandatj" target="_blank">GitHub</a>
                 <a href="https://linkedin.com/in/anandatjakra" target="_blank">LinkedIn</a>
             </div>
         </div>
     </section>
+
+    <div class="article-backdrop" id="articleBackdrop">
+        <div class="article-card">
+            <button class="modal-return-btn" id="modalCloseBtn">&larr; Return</button>
+            
+            <div class="article-content" id="articleContentContainer"></div>
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
