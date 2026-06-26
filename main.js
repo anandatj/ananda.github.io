@@ -10,14 +10,14 @@ const projectsData = [
     {
         title: "Resonant Controller Design for WRSM drives",
         description: "Development of advanced rotor current control system for wound-rotor synchronous motor drives in C2000 microcontroller, achieving minimal delay and lag between setpoint current and excitation current.",
-        image: "./src/propres.png",
+        image: "./src/res_Controller.png",
         link: "#",
         linkText: ""
     },
     {
         title: "High-Speed Speed Controller Design for Very High Power Synchronous Machine in M4-Cortex MCU",
         description: "Design and implementation of a high-speed high-torque speed controller for a 900 kW synchronous machine using a M4-Cortex microcontroller through CAN Bus communication protocol.",
-        image: "./src/m4_cascadia.jpg",
+        image: "./src/m4_motor.jpg",
         link: "#",
         linkText: ""
     },
